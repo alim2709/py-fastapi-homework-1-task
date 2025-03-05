@@ -4,6 +4,7 @@ from typing import List, Optional
 
 from pydantic import BaseModel
 
+
 class MovieDetailResponseSchema(BaseModel):
     id: int
     name: str
@@ -20,7 +21,7 @@ class MovieDetailResponseSchema(BaseModel):
     country: str
 
     class Config:
-        arbitrary_types_allowed=True
+        arbitrary_types_allowed = True
 
 
 class MovieListResponseSchema(BaseModel):

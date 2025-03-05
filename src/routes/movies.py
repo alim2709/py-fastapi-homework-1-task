@@ -5,7 +5,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from database import get_db, MovieModel
 from schemas import (MovieListResponseSchema, MovieDetailResponseSchema)
 
+
 router = APIRouter()
+
 
 # Write your code here
 @router.get("/movies", response_model=MovieListResponseSchema)
@@ -14,7 +16,7 @@ async def get_movies(
         page: int = Query(1, ge=1, description="The actual page number."),
         per_page: int = Query(
         10, ge=1, le=20, description="Count movies on page"
-    )
+        )
 ):
     total_items = await db.scalar(select(func.count(MovieModel.id)))
     if total_items == 0:
@@ -46,6 +48,7 @@ async def get_movies(
         "total_pages": total_pages,
         "total_items": total_items,
     }
+
 
 @router.get(
     "/movies/{movie_id}/",
