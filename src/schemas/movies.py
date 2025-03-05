@@ -8,7 +8,7 @@ from pydantic import BaseModel
 class MovieDetailResponseSchema(BaseModel):
     id: int
     name: str
-    date: datetime.date
+    date: datetime
     score: float
     genre: str
     overview: str
